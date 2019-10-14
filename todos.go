@@ -146,7 +146,6 @@ func fetchurl(url string, id int64) string {
 	tnow := time.Now()
 	d1 := Download{Response: string(responseData), Duration: time.Since(start), CreatedAt: tnow}
 	downloads[id] = append(downloads[id], d1)
-	fmt.Println("Download completed")
 	return "ok"
 }
 

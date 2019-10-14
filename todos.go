@@ -126,7 +126,10 @@ func (rs Work) Delete(w http.ResponseWriter, r *http.Request) {
 func (rs Work) Sync(w http.ResponseWriter, r *http.Request) {
 	// It's currently called Sync - it should display Download history
 	// Index Context is already passed in
-	djson, _ := json.Marshal(downloads)
+	id := chi.URLParam(r, "id")
+	var idx int64
+	idx, _ = strconv.ParseInt(id, 10, 64)
+	djson, _ := json.Marshal(downloads[idx])
 	w.WriteHeader(200)
 	w.Write(djson)
 }

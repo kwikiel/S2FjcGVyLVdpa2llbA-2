@@ -70,7 +70,6 @@ func main() {
 	// Starts the worker and releases the Kraken
 	r.Get("/worker", func(w http.ResponseWriter, r *http.Request) {
 		for k, v := range database {
-			fmt.Printf("key[%v] value[%v]\n", k, v)
 			go polling(v.INTERVAL*1000000000, v.URL, k)
 		}
 		w.WriteHeader(200)
